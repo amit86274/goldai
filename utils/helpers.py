@@ -1,0 +1,7 @@
+
+def chunked(iterable, size):
+    for i in range(0, len(iterable), size):
+        yield iterable[i:i+size]
+
+def clamp(value, minimum, maximum):
+    return max(minimum, min(value, maximum))
