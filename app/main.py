@@ -14,6 +14,9 @@ from pathlib import Path
 
 from app.logger import logger
 
+from app.bootstrap import bootstrap
+
+from app.banner import show
 
 class GoldAIApplication:
     """
@@ -76,9 +79,14 @@ def main():
 
     try:
 
-        app.initialize()
+      show()
+      bootstrap.validate_environment()
 
-        app.run()
+      bootstrap.system_information()
+
+      app.initialize()
+
+      app.run()
 
     except KeyboardInterrupt:
 
