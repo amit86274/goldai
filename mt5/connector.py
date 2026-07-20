@@ -11,6 +11,7 @@ import logging
 import time
 from dataclasses import dataclass
 from typing import Optional, Any
+import os
 
 try:
     import MetaTrader5 as mt5
@@ -48,10 +49,10 @@ class MT5Connector:
         """Initialize and connect to MT5."""
         self.logger.info("Initializing MT5...")
         ok = mt5.initialize(
-            path=self.config.path,
-            login=self.config.login,
-            password=self.config.password,
-            server=self.config.server,
+            path=self.config.path or os.getenv("MT5_TERMINAL", None),
+            login=self.config.login or int(os.getenv("MT5_LOGIN", "0") or 0),
+            password=self.config.password or os.getenv("MT5_PASSWORD", None),
+            server=self.config.server or os.getenv("MT5_SERVER", None),
             timeout=self.config.timeout,
             portable=self.config.portable,
         )
@@ -96,6 +97,23 @@ class MT5Connector:
 
     def last_error(self):
         return mt5.last_error()
+
+    def account_balance(self) -> Optional[float]:
+        if not self.connected:
+            return None
+        info = mt5.account_info()
+        return None if info is None else float(info.balance)
+
+    def symbols(self) -> list[str]:
+        if not self.connected:
+            return []
+        symbols = mt5.symbols_get()
+        return [symbol.name for symbol in symbols] if symbols else []
+
+    def get_rates(self, symbol: str, count: int = 10) -> list[Any]:
+        if not self.connected:
+            return []
+        return mt5.copy_rates_from_pos(symbol, mt5.TIMEFRAME_M1, 0, count)
 
 
 if __name__ == "__main__":

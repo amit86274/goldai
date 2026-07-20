@@ -1,0 +1,199 @@
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 14:56:24 | WARNING  | MainThread | GoldAI | bootstrap.py:74 | MT5 terminal path is not configured; continuing in offline mode
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | main.py:33 | ================================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | main.py:34 | Starting Gold-AI
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | main.py:35 | ================================================================================
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | main.py:39 | Bootstrap complete
+2026-07-20 14:56:24 | INFO     | MainThread | GoldAI | main.py:58 | Gold-AI Engine Running
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | main.py:45 | ================================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | main.py:46 | Starting Gold-AI
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI | main.py:47 | ================================================================================
+2026-07-20 16:41:13 | INFO     | MainThread | GoldAI.MT5 | connector.py:50 | Initializing MT5...
+2026-07-20 16:41:14 | ERROR    | MainThread | GoldAI.MT5 | connector.py:63 | Connection failed: (-2, 'Terminal: Invalid params')
+2026-07-20 16:41:14 | WARNING  | MainThread | GoldAI | main.py:84 | MT5 unavailable; continuing in offline mode
+2026-07-20 16:41:14 | WARNING  | MainThread | GoldAI | main.py:100 | Model pipeline initialization failed: Invalid classes inferred from unique values of `y`.  Expected: [0], got [1]
+2026-07-20 16:41:14 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
+2026-07-20 16:41:14 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
+2026-07-20 16:41:14 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | main.py:45 | ================================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | main.py:46 | Starting Gold-AI
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI | main.py:47 | ================================================================================
+2026-07-20 16:49:39 | INFO     | MainThread | GoldAI.MT5 | connector.py:50 | Initializing MT5...
+2026-07-20 16:49:40 | ERROR    | MainThread | GoldAI.MT5 | connector.py:63 | Connection failed: (-6, 'Terminal: Authorization failed')
+2026-07-20 16:49:40 | WARNING  | MainThread | GoldAI | main.py:84 | MT5 unavailable; continuing in offline mode
+2026-07-20 16:49:40 | WARNING  | MainThread | GoldAI | main.py:100 | Model pipeline initialization failed: Invalid classes inferred from unique values of `y`.  Expected: [0], got [1]
+2026-07-20 16:49:40 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
+2026-07-20 16:49:40 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
+2026-07-20 16:49:40 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | main.py:45 | ================================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | main.py:46 | Starting Gold-AI
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI | main.py:47 | ================================================================================
+2026-07-20 18:55:28 | INFO     | MainThread | GoldAI.MT5 | connector.py:50 | Initializing MT5...
+2026-07-20 18:55:28 | ERROR    | MainThread | GoldAI.MT5 | connector.py:63 | Connection failed: (-6, 'Terminal: Authorization failed')
+2026-07-20 18:55:28 | WARNING  | MainThread | GoldAI | main.py:84 | MT5 unavailable; continuing in offline mode
+2026-07-20 18:55:28 | WARNING  | MainThread | GoldAI | main.py:100 | Model pipeline initialization failed: Invalid classes inferred from unique values of `y`.  Expected: [0], got [1]
+2026-07-20 18:55:29 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
+2026-07-20 18:55:29 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
+2026-07-20 18:55:29 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | main.py:45 | ================================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | main.py:46 | Starting Gold-AI
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI | main.py:47 | ================================================================================
+2026-07-20 18:58:12 | INFO     | MainThread | GoldAI.MT5 | connector.py:50 | Initializing MT5...
+2026-07-20 18:58:18 | ERROR    | MainThread | GoldAI.MT5 | connector.py:63 | Connection failed: (-6, 'Terminal: Authorization failed')
+2026-07-20 18:58:18 | WARNING  | MainThread | GoldAI | main.py:84 | MT5 unavailable; continuing in offline mode
+2026-07-20 18:58:18 | WARNING  | MainThread | GoldAI | main.py:100 | Model pipeline initialization failed: Invalid classes inferred from unique values of `y`.  Expected: [0], got [1]
+2026-07-20 18:58:18 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
+2026-07-20 18:58:18 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
+2026-07-20 18:58:18 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:45 | ================================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:46 | Starting Gold-AI
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:47 | ================================================================================
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI.MT5 | connector.py:50 | Initializing MT5...
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI.MT5 | connector.py:61 | Connected successfully.
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:81 | MT5 connected
+2026-07-20 19:26:54 | WARNING  | MainThread | GoldAI | main.py:100 | Model pipeline initialization failed: Invalid classes inferred from unique values of `y`.  Expected: [0], got [1]
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
+2026-07-20 19:26:54 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:6 | 
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:8 | ======================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:10 |               GOLD AI
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:12 | ======================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:14 | Version : 1.0.0
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:16 | Build   : Production
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:18 | ======================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | banner.py:20 | 
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:25 | Validating runtime environment...
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:33 | Environment OK
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:85 | ======================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:87 | Gold-AI Runtime
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:89 | ======================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:91 | OS: Windows
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:93 | Release: 11
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:95 | Python: 3.12.7
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:97 | CPU: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:99 | Root: D:\Projects\Amit\XGboost
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | bootstrap.py:101 | ======================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:45 | ================================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:46 | Starting Gold-AI
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:47 | ================================================================================
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI.MT5 | connector.py:50 | Initializing MT5...
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI.MT5 | connector.py:61 | Connected successfully.
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:81 | MT5 connected
+2026-07-20 20:52:55 | WARNING  | MainThread | GoldAI | main.py:100 | Model pipeline initialization failed: Invalid classes inferred from unique values of `y`.  Expected: [0], got [1]
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
+2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00

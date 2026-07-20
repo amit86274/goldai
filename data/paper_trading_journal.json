@@ -1,0 +1,12 @@
+{
+  "balance": 9900.0,
+  "records": [
+    {
+      "action": "BUY",
+      "confidence": 0.9520000000000001,
+      "position_size": 100.0,
+      "balance_after": 9900.0,
+      "note": "sample decision"
+    }
+  ]
+}

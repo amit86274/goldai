@@ -70,15 +70,15 @@ class Bootstrap:
 
     def _check_mt5(self):
 
+        if not settings.mt5.terminal_path:
+            logger.warning("MT5 terminal path is not configured; continuing in offline mode")
+            return
+
         terminal = Path(settings.mt5.terminal_path)
 
         if not terminal.exists():
-
-            raise FileNotFoundError(
-
-                f"MT5 terminal not found:\n{terminal}"
-
-            )
+            logger.warning("MT5 terminal not found at %s; continuing in offline mode", terminal)
+            return
 
     def system_information(self):
 

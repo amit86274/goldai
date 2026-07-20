@@ -9,6 +9,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any, Dict
 
 from dotenv import load_dotenv
 
@@ -64,13 +65,38 @@ class Settings:
 
     ai: AIConfig
 
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "debug": self.debug,
+            "mt5": {
+                "login": self.mt5.login,
+                "server": self.mt5.server,
+                "terminal_path": self.mt5.terminal_path,
+                "timeout": self.mt5.timeout,
+            },
+            "database": {
+                "host": self.database.host,
+                "port": self.database.port,
+                "database": self.database.database,
+            },
+            "redis": {
+                "host": self.redis.host,
+                "port": self.redis.port,
+                "db": self.redis.db,
+            },
+            "ai": {
+                "model_directory": self.ai.model_directory,
+                "prediction_threshold": self.ai.prediction_threshold,
+            },
+        }
 
-def _required(name: str) -> str:
+
+def _optional(name: str, default: str) -> str:
 
     value = os.getenv(name)
 
     if value is None or value == "":
-        raise RuntimeError(f"Environment variable '{name}' is missing")
+        return default
 
     return value
 
@@ -81,46 +107,48 @@ settings = Settings(
 
     mt5=MT5Config(
 
-        login=int(_required("MT5_LOGIN")),
+        login=int(_optional("MT5_LOGIN", "0")),
 
-        password=_required("MT5_PASSWORD"),
+        password=_optional("MT5_PASSWORD", ""),
 
-        server=_required("MT5_SERVER"),
+        server=_optional("MT5_SERVER", "localhost"),
 
-        terminal_path=_required("MT5_TERMINAL"),
+        terminal_path=_optional("MT5_TERMINAL", ""),
+
+        timeout=int(_optional("MT5_TIMEOUT", "60000")),
 
     ),
 
     database=DatabaseConfig(
 
-        host=_required("POSTGRES_HOST"),
+        host=_optional("POSTGRES_HOST", "localhost"),
 
-        port=int(_required("POSTGRES_PORT")),
+        port=int(_optional("POSTGRES_PORT", "5432")),
 
-        user=_required("POSTGRES_USER"),
+        user=_optional("POSTGRES_USER", "postgres"),
 
-        password=_required("POSTGRES_PASSWORD"),
+        password=_optional("POSTGRES_PASSWORD", "postgres"),
 
-        database=_required("POSTGRES_DB"),
+        database=_optional("POSTGRES_DB", "gold_ai"),
 
     ),
 
     redis=RedisConfig(
 
-        host=_required("REDIS_HOST"),
+        host=_optional("REDIS_HOST", "localhost"),
 
-        port=int(_required("REDIS_PORT")),
+        port=int(_optional("REDIS_PORT", "6379")),
 
-        db=int(os.getenv("REDIS_DB", "0")),
+        db=int(_optional("REDIS_DB", "0")),
 
     ),
 
     ai=AIConfig(
 
-        model_directory=os.getenv("MODEL_DIRECTORY", "models"),
+        model_directory=_optional("MODEL_DIRECTORY", "models"),
 
         prediction_threshold=float(
-            os.getenv(
+            _optional(
                 "PREDICTION_THRESHOLD",
                 "0.75"
             )

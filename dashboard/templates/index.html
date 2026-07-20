@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gold-AI Trading Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: linear-gradient(135deg, #020617, #111827); color: #f8fafc; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .card { background: rgba(17,24,39,0.95); padding: 20px; border-radius: 14px; margin-bottom: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .metric { background: #1f2937; padding: 12px; border-radius: 10px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #475569; margin-top: 6px; background: #1f2937; color: white; }
+    button { margin-top: 16px; padding: 10px 16px; border: none; border-radius: 8px; background: linear-gradient(90deg, #22c55e, #16a34a); color: white; cursor: pointer; font-weight: bold; }
+    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; margin-top: 6px; background: #334155; }
+    .result { margin-top: 16px; padding: 14px; border-radius: 10px; background: #0f172a; white-space: pre-wrap; }
+    .trade-plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+    .plan-item { background: #1e293b; padding: 10px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Gold-AI Trading Dashboard</h2>
+      <p>Monitor the current signal, confidence, position sizing, and trade plan in one place.</p>
+    </div>
+
+    <div class="card">
+      <h3>Signal Inputs</h3>
+      <div class="grid">
+        <div>
+          <label>Probability</label>
+          <input id="probability" type="number" value="0.8" step="0.01">
+        </div>
+        <div>
+          <label>Trend Strength</label>
+          <input id="trend_strength" type="number" value="0.6" step="0.01">
+        </div>
+        <div>
+          <label>Volatility</label>
+          <input id="volatility" type="number" value="0.2" step="0.01">
+        </div>
+        <div>
+          <label>Balance</label>
+          <input id="balance" type="number" value="10000" step="0.01">
+        </div>
+        <div>
+          <label>Risk Percent</label>
+          <input id="risk_percent" type="number" value="1.0" step="0.01">
+        </div>
+        <div>
+          <label>Max Position Size</label>
+          <input id="max_position_size" type="number" value="0.02" step="0.01">
+        </div>
+        <div>
+          <label>Market Session</label>
+          <select id="market_session">
+            <option value="active">active</option>
+            <option value="closed">closed</option>
+          </select>
+        </div>
+        <div>
+          <label>Current Price</label>
+          <div style="display: flex; gap: 8px;">
+            <input id="current_price" type="number" value="2000" step="0.01" style="flex: 1;">
+            <button onclick="fetchLivePrice()" style="padding: 8px 12px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">📡 Live</button>
+          </div>
+        </div>
+      </div>
+      <button onclick="runPrediction()">Run Prediction</button>
+    </div>
+
+    <div class="card">
+      <h3>Live Decision</h3>
+      <div class="grid" id="summaryGrid">
+        <div class="metric"><strong>Action</strong><div id="actionValue">--</div></div>
+        <div class="metric"><strong>Confidence</strong><div id="confidenceValue">--</div></div>
+        <div class="metric"><strong>Position Size</strong><div id="positionValue">--</div></div>
+        <div class="metric"><strong>Reason</strong><div id="reasonValue">--</div></div>
+      </div>
+      <div class="card" style="margin-top: 12px; background: #111827;">
+        <h4>Trade Plan</h4>
+        <div class="trade-plan" id="tradePlan">
+          <div class="plan-item"><strong>Entry</strong><div id="entryValue">--</div></div>
+          <div class="plan-item"><strong>Stop Loss</strong><div id="stopLossValue">--</div></div>
+          <div class="plan-item"><strong>Take Profit</strong><div id="takeProfitValue">--</div></div>
+          <div class="plan-item"><strong>Risk</strong><div id="riskValue">--</div></div>
+        </div>
+      </div>
+      <div id="result" class="result" style="display:none;">No result yet.</div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchLivePrice() {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/price/XAUUSD');
+        const data = await response.json();
+        if (data.price) {
+          document.getElementById('current_price').value = data.price.toFixed(2);
+          runPrediction(); // Auto-run prediction with live price
+        } else {
+          alert('Error fetching price: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+
+    // Auto-fetch price on page load
+    window.addEventListener('load', () => {
+      fetchLivePrice();
+      // Refresh price every 5 seconds
+      setInterval(fetchLivePrice, 5000);
+    });
+
+    function buildTradePlan(action, confidence, positionSize, currentPrice) {
+      const price = Number(currentPrice || 0);
+      if (!Number.isFinite(price) || price <= 0) {
+        return { entry: 'N/A', stopLoss: 'N/A', takeProfit: 'N/A', risk: 'N/A', riskPercentage: 'N/A' };
+      }
+      
+      // Calculate risk-reward: 0.5% risk, 1% reward (2:1 ratio)
+      const riskPercentage = 0.5;
+      const rewardPercentage = 1.0;
+      
+      if (action === 'BUY') {
+        const entry = price;
+        const stopLoss = (price * (1 - riskPercentage / 100)).toFixed(2);
+        const takeProfit = (price * (1 + rewardPercentage / 100)).toFixed(2);
+        const riskAmount = (entry - parseFloat(stopLoss)).toFixed(2);
+        
+        return {
+          entry: entry.toFixed(2),
+          stopLoss: stopLoss,
+          takeProfit: takeProfit,
+          risk: `${riskAmount} (${riskPercentage}%)`,
+          riskPercentage: riskPercentage
+        };
+      }
+      
+      if (action === 'SELL') {
+        const entry = price;
+        const stopLoss = (price * (1 + riskPercentage / 100)).toFixed(2);
+        const takeProfit = (price * (1 - rewardPercentage / 100)).toFixed(2);
+        const riskAmount = (parseFloat(stopLoss) - entry).toFixed(2);
+        
+        return {
+          entry: entry.toFixed(2),
+          stopLoss: stopLoss,
+          takeProfit: takeProfit,
+          risk: `${riskAmount} (${riskPercentage}%)`,
+          riskPercentage: riskPercentage
+        };
+      }
+      
+      return { entry: 'N/A', stopLoss: 'N/A', takeProfit: 'N/A', risk: 'N/A', riskPercentage: 'N/A' };
+    }
+
+    async function runPrediction() {
+      const payload = {
+        probability: parseFloat(document.getElementById('probability').value),
+        trend_strength: parseFloat(document.getElementById('trend_strength').value),
+        volatility: parseFloat(document.getElementById('volatility').value),
+        balance: parseFloat(document.getElementById('balance').value),
+        risk_percent: parseFloat(document.getElementById('risk_percent').value),
+        max_position_size: parseFloat(document.getElementById('max_position_size').value),
+        market_session: document.getElementById('market_session').value
+      };
+
+      const resultBox = document.getElementById('result');
+      resultBox.textContent = 'Running...';
+
+      try {
+        const response = await fetch('http://127.0.0.1:5000/decision', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        const decision = data.decision || {};
+        document.getElementById('actionValue').textContent = decision.action || '--';
+        document.getElementById('confidenceValue').textContent = decision.confidence ? (decision.confidence * 100).toFixed(1) + '%' : '--';
+        document.getElementById('positionValue').textContent = decision.position_size ? decision.position_size.toFixed(2) : '--';
+        document.getElementById('reasonValue').textContent = decision.reason || '--';
+
+        const currentPrice = parseFloat(document.getElementById('current_price').value);
+        const plan = buildTradePlan(decision.action, decision.confidence, decision.position_size, currentPrice);
+        document.getElementById('entryValue').textContent = plan.entry;
+        document.getElementById('stopLossValue').textContent = plan.stopLoss;
+        document.getElementById('takeProfitValue').textContent = plan.takeProfit;
+        document.getElementById('riskValue').textContent = plan.risk;
+
+        resultBox.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        resultBox.textContent = 'Error: ' + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
