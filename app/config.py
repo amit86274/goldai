@@ -56,6 +56,7 @@ class AIConfig:
 class Settings:
 
     debug: bool
+    live_trading_enabled: bool
 
     mt5: MT5Config
 
@@ -68,6 +69,7 @@ class Settings:
     def to_dict(self) -> Dict[str, Any]:
         return {
             "debug": self.debug,
+            "live_trading_enabled": self.live_trading_enabled,
             "mt5": {
                 "login": self.mt5.login,
                 "server": self.mt5.server,
@@ -104,6 +106,8 @@ def _optional(name: str, default: str) -> str:
 settings = Settings(
 
     debug=os.getenv("DEBUG", "false").lower() == "true",
+
+    live_trading_enabled=os.getenv("LIVE_TRADING_ENABLED", "false").lower() == "true",
 
     mt5=MT5Config(
 

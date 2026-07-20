@@ -197,3 +197,6 @@
 2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:54 | Bootstrap complete
 2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:107 | Gold-AI Engine Running
 2026-07-20 20:52:55 | INFO     | MainThread | GoldAI | main.py:129 | Sample decision: BUY | confidence=0.95 | size=100.00
+2026-07-20 22:07:27 | INFO     | MainThread | GoldAI | main.py:156 | Signal received: 2
+2026-07-20 22:07:27 | INFO     | MainThread | GoldAI | main.py:135 | Shutdown requested
+2026-07-20 22:07:27 | INFO     | MainThread | GoldAI | main.py:138 | Gold-AI stopped

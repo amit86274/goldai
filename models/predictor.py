@@ -23,3 +23,8 @@ class Predictor:
         if hasattr(self.model, "predict_proba"):
             return self.model.predict_proba(X)
         return None
+
+    @property
+    def classes_(self):
+        """Expose classifier labels so callers can map probability columns safely."""
+        return getattr(self.model, "classes_", None)

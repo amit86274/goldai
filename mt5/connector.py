@@ -15,11 +15,10 @@ import os
 
 try:
     import MetaTrader5 as mt5
-except ImportError as exc:
-    raise ImportError(
-        "MetaTrader5 package is not installed. "
-        "Install with: pip install MetaTrader5"
-    ) from exc
+except ImportError:
+    # MT5 is an optional integration: the application can still be used for
+    # research, backtesting, and paper trading without a terminal installed.
+    mt5 = None
 
 
 @dataclass
@@ -47,6 +46,11 @@ class MT5Connector:
 
     def connect(self) -> bool:
         """Initialize and connect to MT5."""
+        if mt5 is None:
+            self.logger.warning("MetaTrader5 is not installed; running in offline mode")
+            self.connected = False
+            return False
+
         self.logger.info("Initializing MT5...")
         ok = mt5.initialize(
             path=self.config.path or os.getenv("MT5_TERMINAL", None),
@@ -65,7 +69,8 @@ class MT5Connector:
 
     def disconnect(self) -> None:
         """Shutdown MT5."""
-        mt5.shutdown()
+        if mt5 is not None:
+            mt5.shutdown()
         self.connected = False
         self.logger.info("Disconnected.")
 
@@ -93,10 +98,10 @@ class MT5Connector:
         return mt5.terminal_info()
 
     def version(self):
-        return mt5.version()
+        return None if mt5 is None else mt5.version()
 
     def last_error(self):
-        return mt5.last_error()
+        return None if mt5 is None else mt5.last_error()
 
     def account_balance(self) -> Optional[float]:
         if not self.connected:
@@ -114,6 +119,12 @@ class MT5Connector:
         if not self.connected:
             return []
         return mt5.copy_rates_from_pos(symbol, mt5.TIMEFRAME_M1, 0, count)
+
+    def tick(self, symbol: str) -> Optional[Any]:
+        """Return the current broker tick, or ``None`` while offline."""
+        if not self.connected:
+            return None
+        return mt5.symbol_info_tick(symbol)
 
 
 if __name__ == "__main__":
