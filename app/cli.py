@@ -38,9 +38,8 @@ def main() -> None:
             raise RuntimeError("unable to connect to MT5")
         try:
             mt5.symbol_select(args.symbol, True)
-            # The terminal's currently confirmed history depth is 500 bars.
-            daily = mt5.copy_rates_from_pos(args.symbol, mt5.TIMEFRAME_D1, 0, 500)
-            weekly = mt5.copy_rates_from_pos(args.symbol, mt5.TIMEFRAME_W1, 0, 500)
+            daily = mt5.copy_rates_from_pos(args.symbol, mt5.TIMEFRAME_D1, 0, 2000)
+            weekly = mt5.copy_rates_from_pos(args.symbol, mt5.TIMEFRAME_W1, 0, 1000)
             result = MT5XGBoostTrainer().train(daily, weekly, "data/model_artifacts/xauusd_d1_xgboost.joblib")
             print(json.dumps(asdict(result)))
         finally:

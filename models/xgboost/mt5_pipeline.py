@@ -30,6 +30,10 @@ class TrainingResult:
     artifact_path: str
 
 
+class ModelQualityError(ValueError):
+    """Raised when chronological validation does not meet deployment criteria."""
+
+
 def _frame(rates: Any) -> pd.DataFrame:
     frame = pd.DataFrame(rates)
     if frame.empty:
@@ -72,10 +76,13 @@ def build_training_frame(daily_rates: Any, weekly_rates: Any, horizon: int = 5, 
 
 
 class MT5XGBoostTrainer:
-    def __init__(self, validation_fraction: float = 0.2) -> None:
+    def __init__(self, validation_fraction: float = 0.2, minimum_auc: float = 0.55) -> None:
         if not 0.1 <= validation_fraction < 0.5:
             raise ValueError("validation_fraction must be between 0.1 and 0.5")
         self.validation_fraction = validation_fraction
+        if not 0.5 < minimum_auc <= 1.0:
+            raise ValueError("minimum_auc must be greater than 0.5 and at most 1")
+        self.minimum_auc = minimum_auc
 
     def train(self, daily_rates: Any, weekly_rates: Any, artifact_path: str | Path) -> TrainingResult:
         data = build_training_frame(daily_rates, weekly_rates)
@@ -95,6 +102,10 @@ class MT5XGBoostTrainer:
         probabilities = model.predict_proba(X_valid)[:, 1]
         predictions = (probabilities >= 0.5).astype(int)
         auc = float(roc_auc_score(y_valid, probabilities)) if y_valid.nunique() == 2 else None
+        if auc is None or auc < self.minimum_auc:
+            raise ModelQualityError(
+                f"validation AUC {auc:.3f} is below the required {self.minimum_auc:.3f}; model was not saved"
+            )
         target = Path(artifact_path)
         target.parent.mkdir(parents=True, exist_ok=True)
         joblib.dump({"model": model, "features": FEATURE_COLUMNS, "trained_until": str(data["time"].iloc[-1])}, target)
