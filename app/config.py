@@ -121,7 +121,7 @@ settings = Settings(
 
         timeout=int(_optional("MT5_TIMEOUT", "60000")),
 
-    ),
+    ), 
 
     database=DatabaseConfig(
 
